@@ -15,10 +15,12 @@ public class UserService {
 	@Autowired
 	private UserRepository repository;
 	
+	//Retorna todos usuarios
 	public List<User> findAll() {
 		return repository.findAll();
 	}
 	
+	//Retorna um usuario pelo id
 	public User findById(Long id) {
 		Optional<User> obj = repository.findById(id);
 		return obj.get();

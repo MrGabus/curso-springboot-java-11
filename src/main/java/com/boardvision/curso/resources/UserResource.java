@@ -15,10 +15,11 @@ import com.boardvision.curso.services.UserService;
 @RestController
 @RequestMapping(value = "/users")
 public class UserResource {
-	
+		
 	@Autowired
 	private UserService service;
 
+	//Retorna todos os usuarios
 	@GetMapping
 	public ResponseEntity<List<User>> findall(){
 		List<User> list = service.findAll();
@@ -26,6 +27,7 @@ public class UserResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
+	//Retorna um usuario pelo id
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<User> findById(@PathVariable Long id) {
 		User obj = service.findById(id);
