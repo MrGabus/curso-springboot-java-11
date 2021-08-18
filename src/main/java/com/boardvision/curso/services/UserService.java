@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.boardvision.curso.entities.User;
 import com.boardvision.curso.repositories.UserRepository;
+import com.boardvision.curso.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService {
@@ -23,7 +24,7 @@ public class UserService {
 	//Retorna um usuario pelo id
 	public User findById(Long id) {
 		Optional<User> obj = repository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
 	public User insert(User obj) {
